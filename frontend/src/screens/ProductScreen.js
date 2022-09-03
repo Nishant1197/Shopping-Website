@@ -1,8 +1,11 @@
-import React from 'react'
+import axios from 'axios';
+import React, { useEffect, useState } from 'react'
 import { Card,Row,Col,Image,Button, ListGroup, ListGroupItem } from 'react-bootstrap';
 import { NavLink,useParams } from 'react-router-dom'
 import Rating from '../components/Rating';
-import products from '../products'
+
+
+
 // Params are placeholders in the URL that begin
 // with a colon, like the `:id` param defined in
 // the route in this example. A similar convention
@@ -12,8 +15,16 @@ import products from '../products'
   // the dynamic pieces of the URL.
 
 const ProductScreen = ({match}) => {
+const [product,setProduct]=useState({})
   let { id } = useParams();
-  const product=products.find(p=>p._id===id)
+  useEffect(()=>{
+    const fetchProduct=async()=>{
+      const response=await axios.get(`/api/products/${id}`)
+      console.log(response);
+      setProduct(response.data)
+    }
+    fetchProduct()
+  },[])
   return (
    <>
    <NavLink className='btn btn-light my-3' to='/'>Go Back</NavLink>
