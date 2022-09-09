@@ -13,11 +13,11 @@ connectDb()
 const importData=async()=>{
     try{
         //Removing all the records from all the collections
-        console.log("ruuning...");
+    
         await Order.deleteMany()
         await Product.deleteMany()
         await User.deleteMany()
-console.log("before");
+
         //adding all the user records in USER collection
      const createdUsers =   await User.insertMany(users)
       
@@ -58,7 +58,7 @@ const destroyData=async()=>{
         await User.deleteMany()
 
    
-     console.log('Data Destro!');
+     console.log('Data Destroyed!');
      //exit from the process
      process.exit()
 
