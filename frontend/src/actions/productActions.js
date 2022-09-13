@@ -13,8 +13,7 @@ try{
 
 catch(error)
 {
-    console.log(error);
-console.log(error);
+  
     dispatch({type:PRODUCT_LIST_FAIL,
     payload:
     error.response.data.message
@@ -39,8 +38,7 @@ export const listProductDetails=(id)=>async(dispatch)=>{
     
     catch(error)
     {
-        console.log(error);
-    console.log(error);
+     
         dispatch({type:PRODUCT_DETAILS_FAIL,
         payload:
         error.response.data.message
